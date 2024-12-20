@@ -1,0 +1,80 @@
+:root{
+    --imageDim: 6rem;
+    --logoSize: 4rem;
+    --bannercolor: #eb5e28;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+}
+p{
+    margin: 0;
+    padding: 0;
+}
+
+#topbanner{
+    background-color: var(--bannercolor);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+#logo{
+    display: flex;
+    align-items: center;
+}
+#logo > p{
+    font-size: 3rem;
+    font-weight: 600;
+    color: rgb(255, 233, 172);
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+#logo > svg{
+    width: var(--logoSize);
+    height: var(--logoSize);
+}
+#greeting{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+}
+#greeting > p:nth-child(2){
+    font-size: 1rem;
+    font-weight: 500;
+    align-self: self-end;
+    font-style: italic;
+}
+#greeting > p:nth-child(3){
+    font-size: 2rem;
+    font-weight: 700;
+}
+#greeting > img{
+    width: var(--imageDim);
+    height: var(--imageDim);
+    border-radius: 50%;
+    grid-row: 1 / 3;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+#booklist{
+    box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
+    margin: 1rem;
+    width: fit-content;
+    padding: 2rem;
+    border-radius: 10px;
+    outline: 1px solid rgb(236, 236, 236);
+}
+#booklist > p:first-child{
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+}
+#booklist > button{
+    all: unset;
+    color: blue;
+    font-weight: 600;
+    font-size: 1.5rem;
+    align-self: center;
+}
