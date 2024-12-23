@@ -1,5 +1,6 @@
 
 const myLibrary = [];
+const addedBook = document.querySelector("#books");
 const bookShowCase  = document.querySelector(".bookShowCase");
 
 
@@ -48,11 +49,9 @@ function fetchBookInfo(){
 }
 // --------------------Listing new book--------------------------
 function listingAddedBook(myLibrary){
-    const addedBook = document.querySelector("#books");
     const list      = document.createElement('li');
 
     list.textContent    = `${temp.Title} by ${temp.Author}`;
-    list.id             = `${index}`;  
 
     addedBook.appendChild(list);
 }
@@ -99,6 +98,11 @@ function removeBook(myLibrary, label){
     const temp = label.id;
     myLibrary.splice(temp, 1);
     displayBookCard(myLibrary);
+
+    const nthChild = addedBook.children[temp];
+    if(nthChild){
+        addedBook.removeChild(nthChild);
+    }
 
     if(myLibrary.length < 1){
         bookShowCase.style.display = "none";
