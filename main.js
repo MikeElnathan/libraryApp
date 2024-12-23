@@ -1,5 +1,6 @@
 
 const myLibrary = [];
+const bookShowCase  = document.querySelector(".bookShowCase");
 
 
 // --------------------Add book modal--------------------------
@@ -46,18 +47,19 @@ function fetchBookInfo(){
     }
 }
 // --------------------Listing new book--------------------------
-function listingAddedBook(temp){
+function listingAddedBook(myLibrary){
     const addedBook = document.querySelector("#books");
     const list      = document.createElement('li');
 
-    list.textContent = `${temp.Title} by ${temp.Author}`;
+    list.textContent    = `${temp.Title} by ${temp.Author}`;
+    list.id             = `${index}`;  
 
     addedBook.appendChild(list);
 }
 // --------------------Diplay book from library--------------------------
 function displayBookCard(myLibrary){
-    const bookShowCase  = document.querySelector(".bookShowCase");
     bookShowCase.innerHTML = '';
+    bookShowCase.style.display = "flex";
     
     if(myLibrary && myLibrary.length > 0){
         
@@ -71,6 +73,11 @@ function displayBookCard(myLibrary){
             rmBook.id   = `${index}`;
             label.id    = `${index}`;
             
+            rmBook.addEventListener("click", ()=>{
+                console.log("remove is pressed");
+                removeBook(myLibrary, label);
+            })
+
             bookCardDiv.className = "bookCard";
         
             rmBook.innerHTML    = "&times;";
@@ -78,7 +85,7 @@ function displayBookCard(myLibrary){
     
             author.innerText    = `${book.Author}`;
             title.innerText     = `${book.Title}`;
-            
+
             bookCardDiv.appendChild(title);
             bookCardDiv.appendChild(author);
             bookCardDiv.appendChild(rmBook);
@@ -86,7 +93,14 @@ function displayBookCard(myLibrary){
             bookShowCase.appendChild(bookCardDiv);
         });
     }
-
 }
+// --------------------Diplay book from library--------------------------
+function removeBook(myLibrary, label){
+    const temp = label.id;
+    myLibrary.splice(temp, 1);
+    displayBookCard(myLibrary);
 
-console.log("this is running the whole time")
+    if(myLibrary.length < 1){
+        bookShowCase.style.display = "none";
+    }
+}
